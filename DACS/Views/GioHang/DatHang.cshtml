@@ -1,0 +1,127 @@
+﻿
+@model IEnumerable<Giohang>
+<h2>Đặt hàng</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Mã sách</th>
+        <th>Tên sách</th>
+        <th>Hình</th>
+        <th>Giá bán</th>
+        <th>Số lượng</th>
+        <th>Thành tiền</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.madv)</td>
+            <td>@Html.DisplayFor(modelItem => item.tendv)</td>
+            <td><img src="@item.hinh" width="200" /></td> @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @id = item.madv }))
+            {
+                <td>@String.Format("{0:0,0}", item.gia) VNĐ</td>
+                <td>@Html.DisplayFor(modelItem => item.iSoluong)</td>
+                <td>@Html.DisplayFor(modelItem => item.dThanhtien)</td>
+            }
+        </tr>
+    }
+    <tr style="font-weight:bold; text-align:right; color:red">
+        <td colspan="3">Số lượng dịch vụ: @ViewBag.Tongsoluong</td>
+        <td colspan="4">Số loại dịch vụ: @ViewBag.Tongsoluongsanpham</td>
+        <td colspan="5">
+            Tổng tiền:
+            @String.Format("{0:0,0}", @ViewBag.Tongtien) VNĐ
+        </td>
+    </tr>
+    <tr style="font-weight:bold; text-align:right">
+        <td colspan="6">
+            @Html.ActionLink("Trở về giỏ hàng", "Giohang", "GioHang")
+        </td>
+    </tr>
+</table>
+@using DACS.Models
+
+
+<h2 style="text-align:center">Thông tin đặt hàng</h2>
+@{
+    TaiKhoanND kh = (TaiKhoanND)Session["TaiKhoanND"];
+} <table align="center">
+    @using (Html.BeginForm())
+    {
+        @Html.Partial("ErrorsAlert")
+        @Html.ValidationSummary(true)
+        <tr style="height: 40px">
+            <td>Họ tên khách hàng: </td>
+            <td style="font-weight:bold">@kh.TenND</td>
+        </tr>
+        <tr style="height: 40px">
+            <td>Email: </td>
+            <td style="font-weight:bold">@kh.Mail</td>
+        </tr>
+
+
+        <tr style="height: 40px">
+            <td>Địa chỉ: </td>
+            <td style="font-weight:bold">
+                @if (string.IsNullOrEmpty(kh.DiaChi))
+                {
+                    <input type="text" name="address" />
+                }
+                else
+                {
+                    <input type="text" name="address" value="@kh.DiaChi" />
+                }
+
+            </td>
+
+            </tr>
+        <tr style="height: 40px">
+            <td>Điện thoại: </td>
+            <td style="font-weight:bold">@kh.SDT</td>
+        </tr>
+        <tr style="height: 40px">
+            <td>Ngày đặt: </td>
+            <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
+        </tr>
+        <tr style="height: 40px">
+            <td>Ngày thực hiện: </td>
+            <td style="font-weight:bold">
+                <input type="date" name="NgayThucHien" />
+            </td>
+        </tr>
+        <tr>
+            <td>Hình thức thanh toán: </td>
+                <td style="font-weight:bold; padding-left: 32px;padding-top: 20px;">
+                 @foreach (var payment in ViewBag.payments as List<HinhThucTT>)
+                 {
+                     <span style="display: flex; gap: 12px;">
+                         @if (payment.TenTT.Equals("Tiền mặt"))
+                         {
+                             <input id="@payment.MaTT" checked name="payment" value="@payment.MaTT" type="radio" />
+
+                             <label for="@payment.MaTT">@payment.TenTT</label>
+                         }
+                         else
+                         {
+                             <input id="@payment.MaTT" value="@payment.MaTT" name="payment" type="radio" />
+
+                             <label for="@payment.MaTT">@payment.TenTT</label>
+                         }
+                         <br />
+                     </span>
+                }
+                </td>
+
+        </tr>
+
+        <tr style="height: 40px">
+            <td></td>
+            <td style="font-weight:bold">
+                <input type="submit" value="Xác nhận" class="btn btn-success" />
+            </td>
+        </tr>
+    }
+</table>

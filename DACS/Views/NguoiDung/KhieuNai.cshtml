@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "KhieuNai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <form action="/NguoiDung/KhieuNai" method="post">
+        <textarea rows="10" class="mw-100 d-block w-100 mt-4" name="khieu-nai" placeholder="Nhập khiếu nại..."></textarea>
+        <input value=@ViewData["MaHD"] name="MaHD" hidden/>
+        <div class="d-flex justify-content-center my-2"><input class="btn btn-success" type="submit" value="Tạo phiếu phiếu nại"/></div>
+    </form>
+</div>

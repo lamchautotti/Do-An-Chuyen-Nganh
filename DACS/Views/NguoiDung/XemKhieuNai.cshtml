@@ -1,0 +1,16 @@
+﻿@model DACS.Models.PhieuPhanHoi
+
+@{
+    ViewBag.Title = "XemKhieuNai";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{ 
+    DACS.Models.PhieuPhanHoi phieuPhanHoi = ViewData["phieuPhanHoi"] as DACS.Models.PhieuPhanHoi;
+}
+
+<h2>Xem Khieu Nai</h2>
+<div>
+    <p>@phieuPhanHoi.NoiDung</p>
+    <p>@phieuPhanHoi.NgayLapPH</p>
+</div>

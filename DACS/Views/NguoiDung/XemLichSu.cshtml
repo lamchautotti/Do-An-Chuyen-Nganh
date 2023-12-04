@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DACS.Models.HoaDon>
+@{
+    ViewBag.Title = "XemLichSu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using DACS.Models
+@{
+    TaiKhoanND tk = (TaiKhoanND)Session["TaiKhoanND"];
+}
+
+@using DACS.Models
+@{
+    MyDataDataContext data = new MyDataDataContext();
+    List<PhieuPhanHoi> phanHois = ViewData["phieuPhanHois"] as List<PhieuPhanHoi>;
+}
+
+<h2>Xem Lịch Sử</h2>
+@if (tk.LoaiND.MND == 1)
+{
+    <table class="table">
+        <tr class="text-center">
+            <th> Mã hóa đơn </th>
+            <th> Ngày lập đơn </th>
+            <th> Ngày thực hiện </th>
+            <th> Phương thức thanh toán </th>
+            <th> Tên khách hàng </th>
+            <th> Số Điện Thoại </th>
+            <th>Khiếu nại</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>@Html.DisplayFor(modelItem => item.MaHD)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayLap)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayThucHien)</td>
+                <td>@Html.DisplayFor(modelItem => item.HinhThucTT.MoTaTT)</td>
+                <td>@Html.DisplayFor(modelItem => item.TaiKhoanND.TenND)</td>
+                <td>@Html.DisplayFor(modelItem => item.TaiKhoanND.SDT)</td>
+                @foreach (var phieuPhanHoi in phanHois)
+                {
+                    if (phieuPhanHoi.MaHD == item.MaHD)
+                    {
+                        <td><a href="@Url.Action("XemKhieuNai", new { MaHD = phieuPhanHoi.MaPH })">Xem khiếu nại</a></td>
+                    }
+                }
+
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <table class="table">
+        <tr class="text-center">
+            <th> Mã hóa đơn </th>
+            <th> Ngày lập đơn </th>
+            <th> Ngày thực hiện </th>
+            <th> Phương thức thanh toán </th>
+            <td></td>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td>@Html.DisplayFor(modelItem => item.MaHD)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayLap)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgayThucHien)</td>
+                <td>@Html.DisplayFor(modelItem => item.HinhThucTT.MoTaTT)</td>
+
+                <td><a href="@Url.Action("KhieuNai", new { MaHD = item.MaHD })">Lập phiếu phản hồi</a></td>
+            </tr>
+        }
+    </table>
+}
+
