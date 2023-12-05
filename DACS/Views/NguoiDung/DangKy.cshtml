@@ -3,83 +3,308 @@
     ViewBag.Title = "Đăng Ký";
     Layout = "~/Views/Shared/_DiffLayout.cshtml";
 }
+
+<style>
+    .register,
+    .register * {
+        box-sizing: border-box;
+    }
+
+    .register {
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        width: 360px;
+        position: relative;
+    }
+
+    .ng-k {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--h-5-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--h-5-font-size, 24px);
+        font-weight: var(--h-5-font-weight, 400);
+        position: relative;
+    }
+
+    .account-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .t-n-ng-nh-p {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .rectangle-3 {
+        background: var(--neutral-gray-200, #e0e0e0);
+        border-radius: 12px;
+        flex-shrink: 0;
+        width: 180px;
+        height: 32px;
+        position: relative;
+    }
+
+    .password-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .m-t-kh-u {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .rectangle-4 {
+        background: var(--neutral-gray-200, #e0e0e0);
+        border-radius: 12px;
+        flex-shrink: 0;
+        width: 180px;
+        height: 32px;
+        position: relative;
+    }
+
+    .xacnhan-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .x-c-nh-n-m-t-kh-u {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .name-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .h-t-n {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .number-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .s-i-n-tho-i {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .email-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .email {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .cccd-text-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .c-n-c-c-c-ng-d-n {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .create-acc {
+        display: flex;
+        flex-direction: row;
+        gap: 135px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .ng-nh-p {
+        color: var(--semantic-infor, #87c4ff);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+    .button {
+        background: var(--semantic-sussces, #62d2a2);
+        border-radius: 8px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .ng-k2 {
+        color: var(--neutral-black, #3d3d3d);
+        text-align: left;
+        font-family: var(--subtile-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--subtile-1-font-size, 16px);
+        font-weight: var(--subtile-1-font-weight, 400);
+        position: relative;
+    }
+
+</style>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Đăng ký</h4>
-        @Html.Partial("ErrorsAlert")
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="body">
+    @Html.Partial("ErrorsAlert")
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-        <div class="form-group">
-            <label class="control-label col-md-2">Tên đăng nhập</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control" } })
+    <img class="picture" src="~/Content/images/picture.png" />
+
+    <div class="register">
+        <div class="ng-k">Đăng ký</div>
+        <div class="account-text-box">
+            <div class="t-n-ng-nh-p">Tên đăng nhập</div>
+            <div class="rectangle-3">
+ @Html.EditorFor(model => model.TenTK, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenTK, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Mật khẩu</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.MK, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+        <div class="password-text-box">
+            <div class="m-t-kh-u">Mật khẩu</div>
+            <div class="rectangle-4">
+@Html.EditorFor(model => model.MK, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
                 @Html.ValidationMessageFor(model => model.MK, "", new { @class = "text-danger" })
+          
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Mật khẩu xác nhận</label>
-            <div class="col-md-10">
-                <input class="form-control text-box single-line input-validation-error"
+        <div class="xacnhan-text-box">
+            <div class="x-c-nh-n-m-t-kh-u">Xác nhận mật khẩu</div>
+            <div class="rectangle-4">
+                 <input class="form-control text-box single-line input-validation-error"
                        data-val="true" data-val-required="Phải nhập mật khẩu xác nhận!"
                        id="MatKhauXacNhan" name="MatKhauXacNhan" type="password" value="" aria-
                        describedby="MatKhauXacNhan-error" aria-invalid="true">
+
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">Họ tên</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenND, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="name-text-box">
+            <div class="h-t-n">Họ tên</div>
+            <div class="rectangle-4">
+@Html.EditorFor(model => model.TenND, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TenND, "", new { @class = "text-danger" })
+          
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">Điện thoại</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="number-text-box">
+            <div class="s-i-n-tho-i">Số điện thoại</div>
+            <div class="rectangle-4">
+ @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
+           
             </div>
         </div>
-        <div class="form-group">
-            <label class="control-label col-md-2">Email</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="email-text-box">
+            <div class="email">Email</div>
+            <div class="rectangle-4">
+@Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            
             </div>
         </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">CCCD</label>
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "form-control" } })
+        <div class="cccd-text-box">
+            <div class="c-n-c-c-c-ng-d-n">Căn cước công dân</div>
+            <div class="rectangle-4">
+@Html.EditorFor(model => model.CCCD, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.CCCD, "", new { @class = "text-danger" })
+           
             </div>
         </div>
+                @ViewData["Errors"]
 
-        @ViewData["Errors"]
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Đăng ký" class="btn btn-success" />
+        <div class="create-acc">
+                    <a class="ng-nh-p" href="@Url.Action("DangNhap", "NguoiDung")">Đăng nhập</a>
+            <div class="button">
+                                    <input type="submit" value="Đăng ký" class="ng-k2" />
+
             </div>
         </div>
     </div>
-}
-
-<div>
-    <a href="@Url.Action("DangNhap", "NguoiDung")">Đăng nhập</a>
 </div>
-
-
+}

@@ -262,6 +262,7 @@
     <Content Include="Views\NguoiDung\XemLichSu.cshtml" />
     <Content Include="Views\NguoiDung\KhieuNai.cshtml" />
     <Content Include="Views\NguoiDung\XemKhieuNai.cshtml" />
+    <Content Include="Views\Home\GetAllDiichVu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

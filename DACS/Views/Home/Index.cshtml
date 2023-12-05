@@ -1,5 +1,4 @@
-﻿@model PagedList.IPagedList<DACS.Models.DichVu>
-@using PagedList.Mvc;
+﻿@model DACS.Models.DichVu
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_DiffLayOut.cshtml";
@@ -19,109 +18,75 @@
         });
     }
 </script>
-<h2>Dịch vụ</h2>
-<div class="row">
-    @foreach (var item in Model)
-    {
-        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <div class="panel panel-default">
-                <div class="panel panel-heading">
-                    <p><b>Dịch vụ: </b><b style="color:red">@item.TenDV</b></p>
-                </div>
-                <div class="panel-body">
-                    <p><strong>Giá: </strong>@item.GiaDV</p>
-                    <p><img src="@item.Hinh" class="img-fluid" alt="hinh thumnail"></p>
-                </div>
-                <div class="panel panel-heading">
-                    <b style="color:#E57C23">@item.GoiGio</b>
-                </div>
-                <div class="panel-footer clearfix">
-                    <div class="pull-right">
-                        <div class="DatMua" style="margin-bottom:25%">
-                            <a class="btn btn-success" onclick="addToCart(@item.MaDV)">Thuê ngay</a>
-                        </div>
-                        @*<a href="#" class="btn btn-primary">Order</a>
-                            @Html.ActionLink("Read more...", "Detail", new
-                            {
-                                id =
-                            item.masach
-                            }, new { @class = "btn btn-default" })*@
+
+<div class="gioi-thieu"
+     style="background: url(Content/images/gioi-thieu.jpg) center; background-size: cover">
+    <div class="gi-i-thi-u">Giới thiệu</div>
+    <div class="c-ng-ty-tnhh-clean-clear-c-th-nh-l-p-v-o-ng-y-30-th-ng-06-n-m-2023-clean-clear-l-doanh-nghi-p-ti-n-phong-trong-vi-c-ng-d-ng-c-ng-ngh-v-o-ng-nh-gi-p-vi-c-nh-vi-t-nam-ch-ng-t-i-cung-c-p-a-d-ch-v-ti-n-ch-nh-d-n-d-p-nh-v-sinh-m-y-l-nh-i-ch-t-i-ng-nam-th-ng-qua-ng-d-ng-t-l-ch-d-nh-cho-kh-ch-h-ng-clean-clear-v-ng-d-ng-nh-n-vi-c-c-a-c-ng-t-c-vi-n-clean-clear-partner-kh-ch-h-ng-v-c-ng-t-c-vi-n-c-th-ch-ng-ng-v-nh-n-vi-c-tr-c-ti-p-tr-n-ng-d-ng">
+        Công ty TNHH Clean&amp;Clear được thành lập vào ngày 30 tháng 06 năm
+        2023.
+        <br />
+        Clean&amp;Clear là doanh nghiệp tiên phong trong việc ứng dụng công
+        nghệ vào ngành giúp việc nhà ở Việt Nam.
+        <br />
+        Chúng tôi cung cấp đa dịch vụ tiện ích như: dọn dẹp nhà, vệ sinh máy
+        lạnh, đi chợ, … tại Đông Nam Á.
+        <br />
+        Thông qua ứng dụng đặt lịch dành cho khách hàng Clean&amp;Clear
+        <br />
+        và ứng dụng nhận việc của cộng tác viên Clean&amp;Clear Partner, khách
+        hàng và cộng tác viên
+        <br />
+        có thể chủ động đăng và nhận việc trực tiếp trên ứng dụng.
+    </div>
+</div>
+
+<div class="dvuachuong">
+    <div class="d-ch-v-c-a-chu-ng">Dịch vụ được ưa chuộng</div>
+    <div class="list-dich-vu">
+        <div class="top-dichvu">
+            <div class="dichvu">
+                <div class="left">
+                    <div class="gi-t-i">Giặt ủi</div>
+                    <div class="gi-p-b-n-l-m-s-ch-qu-n-o-nhanh-ch-ng-c-ng-ti-n-ch-giao-nh-n-t-n-n-i">
+                        Giúp bạn làm sạch quần áo nhanh chóng, cùng tiện ích giao nhận
+                        tận nơi .
                     </div>
                 </div>
+                <img class="rectangle-1" src="/Content/images/rectangle-10.png" />
+            </div>
+            <div class="dichvu">
+                <div class="left">
+                    <div class="t-ng-v-sinh">Tổng vệ sinh</div>
+                    <div class="x-l-chuy-n-s-u-m-i-v-t-b-n-trong-nh-v-i-t-2-c-ng-t-c-vi-n-gi-p-vi-c-nh-tr-l-n">
+                        Xử lý chuyên sâu mọi vết bẩn trong nhà, với từ 2 cộng tác viên
+                        giúp việc nhà trở lên.
+                    </div>
+                </div>
+                <img class="rectangle-1" src="/Content/images/rectangle-11.png" />
             </div>
         </div>
-    }
-</div>
-<div>
-    <div style="padding-top: 12px">
-        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) /
-        @Model.PageCount
+        <div class="bottom-dichvu">
+            <div class="dichvu">
+                <div class="left">
+                    <div class="i-ch">Đi chợ</div>
+                    <div class="vi-c-mua-s-p-th-c-ph-m-v-d-ng-gia-nh-tr-n-n-ti-n-l-i-h-n-bao-gi-h-t-giao-h-ng-t-n-n-i-ch-sau-1-gi">
+                        Việc mua sắp thực phẩm và đồ dùng gia đình trở nên tiện lợi
+                        hơn bao giờ hết. Giao hàng tận nơi chỉ sau 1 giờ.
+                    </div>
+                </div>
+                <img class="rectangle-1" src="/Content/images/rectangle-12.png" />
+            </div>
+            <div class="dichvu">
+                <div class="left">
+                    <div class="v-sinh-m-y-l-nh">Vệ sinh máy lạnh</div>
+                    <div class="gi-p-c-i-thi-n-ch-t-l-ng-kh-ng-kh-gi-m-m-c-ti-u-th-i-n-n-ng-v-t-ng-tu-i-th-m-y-l-nh-t-i-nh-c-a-b-n">
+                        Giúp cải thiện chất lượng không khí, giảm mức tiêu thụ điện
+                        năng và tăng tuổi thọ máy lạnh tại nhà của bạn.
+                    </div>
+                </div>
+                <img class="rectangle-1" src="/Content/images/rectangle-13.png" />
+            </div>
+        </div>
     </div>
-    <div class="MenuTrang">
-        @Html.PagedListPager(Model, page => Url.Action("Index", new
-        {
-            page = page
-        }), new PagedListRenderOptions
-        {
-            LiElementClasses = new string[] { "page-item" }
-        })
-    </div>
 </div>
-<style>
-    .MenuTrang li {
-        display: inline;
-    }
-</style>
-<style type="text/css">
-    #mau-nut a {
-        clear: both;
-        background-color: orange;
-        color: snow;
-    }
-
-        #mau-nut a:hover {
-            background-color: darkcyan;
-            color: snow;
-        }
-</style>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
-
-        //$('a#datmua').click(function (e) {
-        //    e.preventDefault();
-
-        //});
-        var maxLength = 100;
-        $(".show-read-more").each(function () {
-            var myStr = $(this).text();
-            if ($.trim(myStr).length > maxLength) {
-                var newStr = myStr.substring(0, maxLength);
-                var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-                $(this).empty().html(newStr);
-                $(this).append(' <a href="javascript:void(0);" class="read-more">đọc tiếp...</a>');
-                $(this).append('<span class="more-text">' + removedStr +
-                    '</span>');
-            }
-        });
-        $(".read-more").click(function () {
-            $(this).siblings(".more-text").contents().unwrap();
-            $(this).remove();
-        });
-    });</script>
-<style>
-    .show-read-more .more-text {
-        display: none;
-    }
-
-    .page-item > a {
-        position: relative;
-        display: block;
-        padding: 12px;
-    }
-</style>
-
-
-
-
-

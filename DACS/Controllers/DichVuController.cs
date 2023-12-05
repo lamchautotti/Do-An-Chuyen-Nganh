@@ -12,6 +12,7 @@ namespace DACS.Controllers
     {
         MyDataDataContext data = new MyDataDataContext();
         // GET: Dich Vu
+
         public List<DichVu> SearchByName(string searchString)
         {
             var all_dd = (from tt in data.DichVus select tt).Where(m => m.TenDV.Contains(searchString)).ToList();

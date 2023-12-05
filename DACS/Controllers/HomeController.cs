@@ -17,7 +17,7 @@ namespace DACS.Controllers
             var all_dd = (from ss in data.DichVus select ss).Where(m => /*m.soluongton > 0 &&*/ m.TenDV.Contains(searchString)).ToList();
             return all_dd;
         }
-        public ActionResult Index(int? page, string searchString)
+        public ActionResult GetAllDiichVu(int? page, string searchString)
         {
             if (page == null)
             {
@@ -34,18 +34,11 @@ namespace DACS.Controllers
             return View(all_dv.ToPagedList(page_num, page_size));
         }
 
-        public ActionResult About()
+        public ActionResult Index()
         {
-            ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
     }
 }
