@@ -14,6 +14,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
           rel="stylesheet" />
     <style>
+
+        body{
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
         .navigation-bar,
         .navigation-bar * {
             box-sizing: border-box;
@@ -24,8 +31,6 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
-            width: 1392px;
-            position: relative;
         }
 
         .left {
@@ -34,8 +39,6 @@
             gap: 20px;
             align-items: center;
             justify-content: flex-start;
-            flex-shrink: 0;
-            position: relative;
         }
 
         .home {
@@ -44,7 +47,6 @@
             font-family: var(--h-5-font-family, "Roboto-Regular", sans-serif);
             font-size: var(--h-5-font-size, 24px);
             font-weight: var(--h-5-font-weight, 400);
-            position: relative;
         }
 
         .seach {
@@ -54,7 +56,6 @@
             align-items: center;
             justify-content: flex-start;
             flex-shrink: 0;
-            position: relative;
         }
 
         .danh-s-ch-d-ch-v {
@@ -63,11 +64,9 @@
             font-family: var(--h-5-font-family, "Roboto-Regular", sans-serif);
             font-size: var(--h-5-font-size, 24px);
             font-weight: var(--h-5-font-weight, 400);
-            position: relative;
         }
 
         .text-box {
-            background: var(--neutral-gray-200, #d6d8df);
             border-radius: 7px;
             padding: 10px;
             display: flex;
@@ -76,7 +75,6 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            position: relative;
         }
 
         .nh-p-t-n-d-ch-v-c-n-t-m {
@@ -85,7 +83,6 @@
             font-family: var(--caption-font-family, "Roboto-Regular", sans-serif);
             font-size: var(--caption-font-size, 12px);
             font-weight: var(--caption-font-weight, 400);
-            position: relative;
         }
 
         .button {
@@ -98,7 +95,6 @@
             align-items: center;
             justify-content: flex-start;
             flex-shrink: 0;
-            position: relative;
         }
 
         .t-m-ki-m {
@@ -107,7 +103,6 @@
             font-family: var(--button-font-family, "Roboto-Medium", sans-serif);
             font-size: var(--button-font-size, 14px);
             font-weight: var(--button-font-weight, 500);
-            position: relative;
         }
 
         .danh-s-ch-n-h-ng {
@@ -116,7 +111,6 @@
             font-family: var(--h-5-font-family, "Roboto-Regular", sans-serif);
             font-size: var(--h-5-font-size, 24px);
             font-weight: var(--h-5-font-weight, 400);
-            position: relative;
         }
 
         .right {
@@ -162,6 +156,7 @@
             justify-content: flex-start;
             height: 212px;
             position: relative;
+            flex:none;
         }
 
         .cam-on {
@@ -302,6 +297,10 @@
         a{
             color: black;
         }
+
+        .container{
+            flex: 1 !important;
+        }
     </style>
 </head>
 <body onload="getGioHangPartial();">
@@ -309,19 +308,23 @@
         <div class="navigation-bar">
             <div class="left">
                 <div class="home">Home</div>
-                <div class="seach">
-                    <div class="danh-s-ch-d-ch-v"><a href="/DichVu/ListDichVu">Danh sách dịch vụ</a></div>
-                    <div class="text-box">
-                        <div class="nh-p-t-n-d-ch-v-c-n-t-m">Nhập tên dịch vụ cần tìm</div>
+                <div class="danh-s-ch-n-h-ng"><a href="/DichVu/ListDichVu">Danh sách dịch vụ</a></div>
+                <form action="/DichVu/ListDichVu" method="post" style="margin-left: 20px; margin-right: 24px;">
+                        <div style="height: 36px; padding: 0 0 0 10px;" class="text-box">
+                                    <input style="height: 100%" type="text" class="form-control col-md-10"
+                                           value="@ViewBag.Keyword" name="searchString" placeholder="Nhập tên dịch vụ cần tìm">
+                                    <input type="submit" class="t-m-ki-m button" value="Tìm dịch vụ"
+                                           style="margin-left: 10px;">
                     </div>
-                    <div class="button">
-                        <div class="t-m-ki-m">Tìm kiếm</div>
-                    </div>
-                </div>
-                <div class="danh-s-ch-n-h-ng">Danh sách đơn hàng</div>
+                </form>
+                <div class="danh-s-ch-n-h-ng"><a href="/NguoiDung/XemLichSu">Danh sách đơn hàng</a></div>
+
             </div>
             <div class="right">
-                <div class="ng-xu-t">Đăng xuất</div>
+                <div class="ng-xu-t"><a href="/NguoiDung/DangXuat">
+                Đăng xuất
+                     </a>
+                </div>
                 <div class="admin">Admin</div>
             </div>
         </div>
