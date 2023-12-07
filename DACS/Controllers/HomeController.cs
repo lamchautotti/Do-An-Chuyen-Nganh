@@ -23,7 +23,7 @@ namespace DACS.Controllers
             {
                 page = 1;
             }
-            int page_size = 4;
+            int page_size = 8;
             int page_num = page ?? 1;
             var all_dv = (from ss in data.DichVus select ss).OrderBy(m => m.MaDV);
             if (searchString != null)
