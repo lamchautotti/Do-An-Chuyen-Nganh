@@ -29,7 +29,22 @@
     @Scripts.Render("~/bundles/jquery")
     @Styles.Render("~/Content/style.css")
     @Scripts.Render("~/bundles/modernizr")
+    <style>
+        a {
+            color: black;
+            cursor: pointer;
+        }
+        .l-ch-s-n-h-ng,.gio-hang {
+            color: var(--neutral-black, #130f11);
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            font-size: var(--h-5-font-size, 24px);
+            font-weight: var(--h-5-font-weight, 400);
+            position: relative;
+        }
+    </style>
 </head>
+
 
 <body onload="getGioHangPartial(); onload=startTimer()">
     <div class="home">
@@ -63,28 +78,46 @@
                     </div>
                 }
 
-                </div>
+
+                <a class="l-ch-s-n-h-ng" href=@Url.Action("XemLichSu", "NguoiDung")>lịch sử đơn hàng</a>
+                @{ 
+                    var cart = @ViewData["cart"];
+                }
+                <a class="gio-hang" href="/GioHang/GioHang">Giỏ hàng <span style="color: red">(@ViewBag.Tongsoluongsanpham)</span></a>
+            </div>
             @if (Session["TaiKhoanND"] == null)
             {
 
                 <div class="right">
                     <div class="ng-nh-p">
                         @Html.ActionLink("Đăng nhập", "DangNhap", "NguoiDung", new { area = "" }, new
-                                {
-                                    @class =
-                                     "nav-link"
-                                })
+                   {
+                       @class =
+                                  "nav-link"
+                   })
 
                     </div>
                     <div class="ng-k">
                         @Html.ActionLink("Đăng ký", "DangKy", "NguoiDung", new { area = "" }, new
-                                {
-                                    @class = "nav-link"
-                                })
+                   {
+                       @class = "nav-link"
+                   })
 
                     </div>
                 </div>
             }
+            else
+            {
+                var taiKhoan = @Session["TaiKhoanND"] as DACS.Models.TaiKhoanND;
+                <div style="display: flex; gap: 8px;">
+                    <a style="color: black;" href="/NguoiDung/DangXuat">Đăng Xuất</a>
+                    <span>|</span>
+                    <span>Xin chào @taiKhoan.TenND</span>
+                </div>    
+            }
+
+
+
         </div>
 
         @RenderBody()
@@ -120,7 +153,7 @@
                 type: 'GET',
                 url: "@Url.Action("GioHangPartial", "GioHang")",
                 success: function (result) {
-                    $("#GioHangPartial").html(result);
+                    console.log(result)
                 }
             });
         }

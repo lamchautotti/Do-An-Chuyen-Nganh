@@ -107,6 +107,7 @@ namespace DACS.Controllers
         {
             ViewBag.Tongtien = TongTien();
             ViewBag.Tongsoluongsanpham = TongSoLuongSanPham();
+            ViewData["cart"] = TongSoLuongSanPham();
             ViewBag.Tongsoluong = TongSoLuong();
             return PartialView();
         }
