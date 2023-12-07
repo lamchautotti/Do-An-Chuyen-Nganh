@@ -78,12 +78,12 @@
                     </div>
                 }
 
-
-                <a class="l-ch-s-n-h-ng" href=@Url.Action("XemLichSu", "NguoiDung")>lịch sử đơn hàng</a>
-                @{ 
-                    var cart = @ViewData["cart"];
+                @if (Session["TaiKhoanND"] != null)
+                {
+                    <a class="l-ch-s-n-h-ng" href=@Url.Action("XemLichSu", "NguoiDung")>lịch sử đơn hàng</a>
+                            var cart = ViewBag.Tongsoluongsanpham;
+                    <a class="gio-hang" href="/GioHang/GioHang">Giỏ hàng <span style="color: red">(@cart)</span></a>
                 }
-                <a class="gio-hang" href="/GioHang/GioHang">Giỏ hàng <span style="color: red">(@ViewBag.Tongsoluongsanpham)</span></a>
             </div>
             @if (Session["TaiKhoanND"] == null)
             {
