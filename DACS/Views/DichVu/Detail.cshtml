@@ -5,47 +5,147 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Detail</h2>
+<style>
+    .th-ng-tin-chi-ti-t {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--h-5-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--h-5-font-size, 24px);
+        font-weight: var(--h-5-font-weight, 400);
+        position: relative;
+        margin-top: 8px;
+    }
 
-<div>
-    <h4>DichVu</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            <label class="control-label col-md-2"><b>Tên dịch vụ</b></label>
-        </dt>
+    .list-button,
+    .list-button * {
+        box-sizing: border-box;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.TenDV)
-        </dd>
+    .list-button {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+    }
 
-        <dt>
-            <label class="control-label col-md-2"><b>Hình</b></label>
-        </dt>
+    .edit {
+        background: var(--semantic-sussces, #62d2a2);
+        border-radius: 12px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+    }
 
-        <dd>
-            <img src="@Html.DisplayFor(model => model.Hinh)" class="img-fluid" style="width: 300px" />
-        </dd>
+    .ch-nh-s-a {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
 
-        <dt>
-            <label class="control-label col-md-2"><b>Gói giờ</b></label>
-        </dt>
+    .back {
+        background: var(--semantic-infor, #87c4ff);
+        border-radius: 12px;
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.GoiGio)
-        </dd>
+    .quay-l-i {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
 
-        <dt>
-            <label class="control-label col-md-2"><b>Giá</b></label>
-        </dt>
+    .infor,
+    .infor * {
+        box-sizing: border-box;
+    }
 
-        <dd>
-            @Html.DisplayFor(model => model.GiaDV)
-        </dd>
+    .infor {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: relative;
+    }
 
-    </dl>
+    .t-n-gi-t-i {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--h-6-font-family, "Roboto-Medium", sans-serif);
+        font-size: var(--h-6-font-size, 20px);
+        font-weight: var(--h-6-font-weight, 500);
+        position: relative;
+    }
+
+    .gi-40000-0000 {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--h-6-font-family, "Roboto-Medium", sans-serif);
+        font-size: var(--h-6-font-size, 20px);
+        font-weight: var(--h-6-font-weight, 500);
+        position: relative;
+    }
+
+    .gi-h-nh-ch-nh {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--h-6-font-family, "Roboto-Medium", sans-serif);
+        font-size: var(--h-6-font-size, 20px);
+        font-weight: var(--h-6-font-weight, 500);
+        position: relative;
+    }
+    .picture {
+        border-radius: 24px;
+        width: 240px;
+        height: 240px;
+        object-fit: cover;
+        position: relative;
+    }
+</style>
+<div style="flex: 1;">
+    <div class="th-ng-tin-chi-ti-t">Thông tin chi tiết</div>
+
+    <div class="d-flex gap-3 my-3">
+
+        <div>
+            <img class="picture" src="@Url.Content(Model.Hinh)" />
+        </div>
+        <div>
+            <div class="infor">
+                <div class="t-n-gi-t-i">Tên: @Model.TenDV</div>
+                <div class="gi-40000-0000">Giá: @Model.GiaDV.ToString().Split('.')[0]</div>
+                <div class="gi-h-nh-ch-nh">Giờ: @Model.GoiGio</div>
+            </div>
+
+            <div class="list-button">
+                <div class="edit">
+                    <div class="ch-nh-s-a"><a href="/DichVu/Edit/@Model.MaDV">Chỉnh sửa</a></div>
+                </div>
+                <div class="back">
+                    <div class="quay-l-i"><a href="/DichVu/ListDichVu">Quay lại</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaDV }) |
-    @Html.ActionLink("Quay lại", "ListDichVu")
-</p>

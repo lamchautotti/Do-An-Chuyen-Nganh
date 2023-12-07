@@ -3,40 +3,176 @@
     ViewBag.Title = "ListDichVu";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
+<style>
+    .list-1 {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 24px;
+        width: 1400px;
+        margin-bottom: 24px;
+    }
+
+    .product,
+    .product * {
+        box-sizing: border-box;
+    }
+
+    .product {
+        background: var(--neutral-gray-200, #d6d8df);
+        border-radius: 20px;
+        padding: 8px;
+        display: flex;
+        flex-direction: row;
+        gap: 24px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .tittle {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+        justify-content: flex-start;
+        flex-shrink: 0;
+        position: relative;
+    }
+
+    .t-n-gi-t-i {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
+
+    .gi-40000-0000 {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
+
+    .gi-h-nh-ch-nh {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
+
+    .list-button {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        justify-content: center;
+        margin-top: 8px;
+        flex-shrink: 0;
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    .edit {
+        background: var(--semantic-sussces, #62d2a2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        padding: 10px;
+    }
+
+    .ch-nh-s-a {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
+
+    .detail {
+        background: var(--semantic-infor, #87c4ff);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        padding: 10px;
+    }
+
+    .chi-ti-t {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
+
+    .delete {
+        background: var(--semantic-error, #ff6d60);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        position: relative;
+        padding: 10px;
+    }
+
+    .x-a {
+        color: var(--neutral-black, #130f11);
+        text-align: left;
+        font-family: var(--body-1-font-family, "Roboto-Regular", sans-serif);
+        font-size: var(--body-1-font-size, 16px);
+        font-weight: var(--body-1-font-weight, 400);
+        position: relative;
+    }
+
+    .picture {
+        border-radius: 24px;
+        flex-shrink: 0;
+        width: 160px;
+        height: 160px;
+        position: relative;
+    }
+</style>
+
 <div>
-    @Html.ActionLink("Tạo mới", "Create")
+    <a href="/DichVu/Create" class="btn btn-link">Tạo mới</a>
 </div>
-<h2>Danh sách dịch vụ</h2>
 
-<table class="table">
-    <tr>
-        <th> Mã loại </th>
-        <th> Tên dịch vụ</th>
-        <th> Hình </th>
-        <th> Giá</th>
-        <th></th>
-    </tr>
+<div class="list-1">
+    @foreach (var item in Model)
+    {
+        <div class="product">
+            <div>
+                <div class="tittle">
+                    <div class="t-n-gi-t-i">Tên: @item.TenDV</div>
+                    <div class="gi-40000-0000">Giá: @item.GiaDV.ToString().Split('.')[0]</div>
+                    <div class="gi-h-nh-ch-nh">Giờ: @item.GoiGio</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDV)
-        </td>
-        <td>
-            <img src="@Html.DisplayFor(modelItem => item.Hinh)" class="img-fluid" style="width: 300px" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GoiGio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaDV)
-        </td>
-        <td>
-            @Html.ActionLink("Chi tiết", "Detail", new { id = item.MaDV }) |
-            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = item.MaDV }) |
-            @Html.ActionLink("Xóa", "Delete", new { id = item.MaDV })
-        </td>
-    </tr>
-}
-
-</table>
+                </div>
+                <div class="list-button">
+                    <a class="edit" href="/DichVu/Edit/@item.MaDV">Chỉnh sửa</a>
+                    <a class="detail" href="/DichVu/Detail/@item.MaDV">Chi tiết</a>
+                    <a class="delete" href="/DichVu/Delete/@item.MaDV">Xóa</a>
+                </div>
+            </div>
+            <img class="picture" src="@Url.Content(item.Hinh)" />
+        </div>
+    }
+</div>
